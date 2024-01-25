@@ -1,0 +1,13 @@
+
+
+.footer__flex{
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.footer__copyright{
+    font-size: 14px;
+}

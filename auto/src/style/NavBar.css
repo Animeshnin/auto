@@ -1,0 +1,55 @@
+header{
+    display: flex;
+}
+
+.header__logo-img{
+    width: 150px;
+}
+
+
+
+.header__flex{
+    display: flex;
+    justify-content: space-between;
+   align-items: center;
+}
+
+.header__ul{
+    display: flex;
+}
+
+.header__li:not(:first-child){
+    margin-left: 20px;
+
+}
+
+.list__link:hover{
+    color: #e32526;
+}
+
+.button__link:not(:first-child){
+    margin-left: 20px;
+
+}
+
+.link{
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+.button__link{
+    border: 1px solid #e32526;
+    padding: 10px 30px;
+    transition: 0.2s ease-out;
+
+}
+
+.button__link:hover{
+    background-color: #e32526;
+    color: white;
+}
+
+.header__authorization{
+    word-spacing: 10px;
+
+}
