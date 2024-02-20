@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../img/logo.png'
 import '../style/NavBar.css'
 import {
+    CATALOG__ROUTE,
     LOGIN_ROUTE,
     REGISTRATION__ROUTE
 } from "../consts";
@@ -15,7 +16,7 @@ const NavBar = () => {
                     </div>
                 <div className={'header__list'}>
                     <ul className={'header__ul'}>
-                        <li className={'header__li'}><a className={'list__link link'}>Каталог</a></li>
+                        <li className={'header__li'}><a className={'list__link link'} href={CATALOG__ROUTE}>Каталог</a></li>
                         <li className={'header__li'}><a className={'list__link link'}>Контакты</a></li>
                         <li className={'header__li'}><a className={'list__link link'}>О компании</a></li>
                     </ul>

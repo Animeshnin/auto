@@ -48,6 +48,11 @@ class UserControllers {
         if(!client || !clientLogin){
             return next(ApiError.badRequest("Пользователь с таким логином или e-mail не существует"))
         }
+       let comparePassword = bcrypt.compare(password, client.password)
+
+        if(!comparePassword){
+            return next(ApiError.badRequest('Указан неверный пароль'))
+        }
        const token = generateJwt(client.id, client.email, client.role)
        return res.json({token})
 

@@ -1,19 +1,25 @@
 import {
+    CATALOG__ROUTE,
     LOGIN_ROUTE,
     REGISTRATION__ROUTE
 } from "./consts";
-import auth from './page/auth'
-import registration  from './page/registration'
 
-import catalog from './page/registration'
+
+import Registration from "./page/registration";
+import Catalog from "./page/catalog";
+import Auth from "./page/auth";
 export const router = [
     {
         path: LOGIN_ROUTE,
-        Component: auth
+        Component: Auth
     },
     {
         path:  REGISTRATION__ROUTE,
-        Component: registration
+        Component: Registration
+    },
+    {
+        path: CATALOG__ROUTE,
+        Component: Catalog
     }
 ]
 
