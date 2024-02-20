@@ -1,0 +1,36 @@
+const sequelize = require('../db')
+const {DataTypes} = require('sequelize')
+
+
+const Client = sequelize.define('client', {
+    idc: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    fio: {type: DataTypes.STRING},
+    passport: {type: DataTypes.STRING, unique: true },
+    phone: {type: DataTypes.STRING, unique: true},
+    email: {type: DataTypes.STRING, unique: true},
+    login: {type: DataTypes.STRING, unique: true},
+    password: {type: DataTypes.STRING},
+    role: {type: DataTypes.STRING}
+})
+
+const Auto = sequelize.define('auto', {
+    ida: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    brand: {type: DataTypes.STRING},
+    name: {type: DataTypes.STRING},
+    run: {type: DataTypes.STRING, allowNull: false},
+    price: {type: DataTypes.STRING, allowNull: false},
+})
+
+const Manager = sequelize.define('manager', {
+    idm: {type: DataTypes.INTEGER,primaryKey: true, autoIncrement: true},
+    fio: {type: DataTypes.STRING},
+    job: {type: DataTypes.STRING},
+    login: {type: DataTypes.STRING},
+    password: {type: DataTypes.STRING}
+})
+
+module.exports = {
+    Auto,
+    Manager,
+    Client
+}
