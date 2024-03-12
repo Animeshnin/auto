@@ -2,34 +2,31 @@ import './style/reset.css'
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import AppRouter from "./components/AppRouter";
-import {check} from "./http/userApi";
+
 import {BrowserRouter} from "react-router-dom";
 import {Context} from "./index";
 import {useContext, useEffect, useState} from "react";
 import {Spinner} from "react-bootstrap";
+import './style/global.css'
 
 
 
 function App() {
     const {user} = useContext(Context)
-    const [loading, setLoading] = useState(true)
-
+    let check = localStorage.getItem('token')
     useEffect(() => {
-        check().then(data => {
+        if(check) {
             user.setUser(true)
             user.setIsAuth(true)
-        }).finally(() => setLoading(false))
-    }, [])
+        }
+    })
 
-    if(loading){
-        return <Spinner animation={'grow'}/>
-    }
 
 
   return (
-    <div className="wrap">
+    <div className="wrapper">
         <BrowserRouter>
-      <NavBar/>
+        <NavBar/>
             <div className={'content'}>
                 <AppRouter/>
             </div>

@@ -38,6 +38,7 @@ class UserControllers {
     const client = await Client.create({fio, passport, email, login, phone, password: hashPassword, role})
        const token = generateJwt(client.id, client.email, client.role)
 
+
        return res.json({token})
    }
 
@@ -53,14 +54,18 @@ class UserControllers {
         if(!comparePassword){
             return next(ApiError.badRequest('Указан неверный пароль'))
         }
-       const token = generateJwt(client.id, client.email, client.role)
+       const token = generateJwt(client.idc, client.email, client.role)
        return res.json({token})
 
    }
     async check(req, res, next){
-        let main = req.user.email
-        const token = generateJwt(req.user.id, req.user.email, req.user.role)
-        return res.json({token})
+       if (req === null){
+           return
+       } else {
+           const token = generateJwt(req.user.id, req.user.email, req.user.role)
+           return res.json({token})
+       }
+
     }
 
 

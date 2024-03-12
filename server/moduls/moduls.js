@@ -15,10 +15,14 @@ const Client = sequelize.define('client', {
 
 const Auto = sequelize.define('auto', {
     ida: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    brand: {type: DataTypes.STRING},
     name: {type: DataTypes.STRING},
     run: {type: DataTypes.STRING, allowNull: false},
     price: {type: DataTypes.STRING, allowNull: false},
+    img: {type: DataTypes.STRING, allowNull: false},
+    place: {type: DataTypes.INTEGER},
+    yearOfIssue: {type: DataTypes.INTEGER},
+    description: {type: DataTypes.TEXT },
+    driveUnit: {type: DataTypes.STRING, allowNull: false}
 })
 
 const Manager = sequelize.define('manager', {
@@ -29,8 +33,28 @@ const Manager = sequelize.define('manager', {
     password: {type: DataTypes.STRING}
 })
 
+const Transmission = sequelize.define('transmission', {
+    id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false}
+})
+
+const Brand= sequelize.define('brand', {
+    id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false}
+})
+
+Transmission.hasMany(Auto)
+Auto.belongsTo(Transmission)
+
+Brand.hasMany(Auto)
+Auto.belongsTo(Brand)
+
+
+
 module.exports = {
     Auto,
     Manager,
-    Client
+    Client,
+    Brand,
+    Transmission
 }

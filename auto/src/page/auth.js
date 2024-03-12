@@ -14,7 +14,6 @@ import {Context} from "../index";
 
 const Auth = observer(() => {
         const {user} = useContext(Context)
-
         const inputs = document.querySelector('.input');
         const navigate = useNavigate()
         const [email, setEmail] = useState('')
@@ -99,7 +98,7 @@ const Auth = observer(() => {
                                 Нет аккаунта? <NavLink to={REGISTRATION__ROUTE}
                                                        className={'gray'}>Зарегистрируйся!</NavLink>
                             </div>
-                            <button onClick={click} className={'button__link'}>Войти</button>
+                            <button onClick={click} type={'button'} className={'button__link'}>Войти</button>
                         </div>
 
                     </form>

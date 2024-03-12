@@ -1,7 +1,8 @@
 import React from 'react';
 import {
     LOGIN_ROUTE,
-    REGISTRATION__ROUTE
+    REGISTRATION__ROUTE,
+    ADMIN__ROUTE
 } from "../consts";
 
 import {Routes, Route} from 'react-router-dom'

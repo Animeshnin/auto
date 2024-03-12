@@ -1,0 +1,67 @@
+.card__auto{
+    width: 380px;
+    box-shadow: 3px 3px 7px #999999;
+    margin: 0 5px 20px;
+    padding: 0px;
+}
+
+.card__auto-img{
+    display:block;
+    height:100%;
+    width: 100%;
+}
+
+.card-mid{
+    padding:20px
+}
+.card__auto-title{
+    font-size: 16px;
+    color: #333333;
+    margin-bottom:15px;
+    font-weight: 600;
+}
+
+.gray{
+    font-size: 12px;
+}
+
+.card__auto-description{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9ebee;
+}
+
+.card__auto-description>p{
+    font-size: 14px;
+    font-weight: 600
+}
+
+.card-auto-price{
+    width: 171px
+}
+
+.fz-18{
+    font-size: 18px;
+    font-weight: 600
+}
+
+.card-auto-price>h5{
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 15px;
+}
+
+.card__auto-button{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+.card__auto-price{
+    display: flex;
+}
+
+
+

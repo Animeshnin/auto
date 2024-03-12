@@ -1,0 +1,13 @@
+.form {
+    box-shadow: 3px 3px 7px #999999;
+    margin-left: 20px;
+
+
+
+}
+.form__border-bottom{
+    border-bottom: ;
+    display:flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}

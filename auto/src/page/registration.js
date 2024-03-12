@@ -4,7 +4,6 @@ import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Logo from '../img/logo.png'
 import '../style/auth.css'
 import {observer} from "mobx-react-lite";
-
 import { InputMask } from 'primereact/inputmask';
 import {Context} from "../index";
 import {registration} from "../http/userApi";
@@ -50,7 +49,7 @@ const Registration = observer(() => {
             </div>
 
             <div className="login-container">
-                <form action="/login" method="POST">
+                <form action={'/login'} method={'POST'}>
                     <h2 className="welcom">{"Регистрация"}</h2>
                     <div className={"input-div"}>
                         <div className="i">
@@ -59,7 +58,7 @@ const Registration = observer(() => {
                         <div>
                             <h5>ФИО</h5>
                             <input value={fio} onChange={e => setFio(e.target.value)} className="input" type="fio"
-                                   name="name" id="fio"/>
+                                   name="text" id="fio"/>
                         </div>
                     </div>
                     <div className={"input-div "}>
@@ -92,7 +91,7 @@ const Registration = observer(() => {
                         <div>
                             <h5>Email</h5>
                             <input value={email} onChange={e => setEmail(e.target.value)} className="input" type="email"
-                                   name="email" id="login"/>
+                                   name="email" id="email"/>
                         </div>
 
                     </div>
@@ -103,8 +102,8 @@ const Registration = observer(() => {
                         </div>
                         <div>
                             <h5>Логин</h5>
-                            <input value={login} onChange={e => setLogin(e.target.value)} className="input" type="login"
-                                   name="login" id="login"/>
+                            <input value={login} onChange={e => setLogin(e.target.value)} className="input" type="text"
+                                   name="text" id="text"/>
                         </div>
                     </div>
                     <div className={"input-div "}>
@@ -124,7 +123,7 @@ const Registration = observer(() => {
                             Есть аккаунт?  <NavLink to={LOGIN_ROUTE} className={'gray'}>Войдите!</NavLink>
                         </div>
 
-                        <button className={'button__link'} onClick={click}>Зарегистрироваться</button>
+                        <button  type={'button'} className={'button__link'} onClick={click}>Зарегистрироваться</button>
                     </div>
 
                 </form>
