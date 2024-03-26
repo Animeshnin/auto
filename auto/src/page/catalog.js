@@ -12,6 +12,7 @@ const Catalog = observer(()=> {
         auto.setDevices(data)
     })
     }, [])
+    console.log(auto)
     return(
         <div>
         <DeviceList/>

@@ -32,8 +32,8 @@ const  CreateBrand = ({show, onHide}) => {
                 ></Form.Control>
             </Form>
         </Modal.Body>
-            <Modal.Footer>
-                <Button variant={"success"} onClick={onHide}>Закрыть</Button>
+            <Modal.Footer className={'justify-content-center'}>
+                <Button variant={"danger"} onClick={onHide}>Закрыть</Button>
                 <Button variant={"success"} onClick={addType}>Добавить</Button>
 
             </Modal.Footer>

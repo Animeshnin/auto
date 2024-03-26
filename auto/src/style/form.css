@@ -1,13 +1,39 @@
 .form {
     box-shadow: 3px 3px 7px #999999;
-    margin-left: 20px;
-
+    width: 350px;
+    padding: 10px 15px;
 
 
 }
 .form__border-bottom{
-    border-bottom: ;
     display:flex;
-    justify-content: space-around;
-    padding-top: 10px;
+    justify-content: space-between;
+
 }
+
+.date{
+    border: none;
+    padding: 10px 2px;
+    border-bottom: 1px solid #e32526;
+}
+
+.date:focus-within {
+    outline:1px solid #e32526;
+    border: none;
+}
+
+.additionalServices-label{
+    padding-left: 10px;
+}
+
+.additionalServices-item{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.padding-left{
+    padding-left: 10px
+}
+
+

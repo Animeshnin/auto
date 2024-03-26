@@ -21,6 +21,17 @@ export const fetchOneAuto = async (id) => {
     return data
 }
 
+export const fetchAdditionalServices = async () => {
+    const {data} = await $host.get('api/additionalServices')
+    return data
+}
+
+export const createAdditionalServices = async (name, price) => {
+    const {data} = await $authHost.post('api/additionalServices/create', {name, price})
+    return data
+
+}
+
 
 export const fetchBrand = async () => {
     const {data} = await $host.get('api/brand')

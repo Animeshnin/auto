@@ -4,6 +4,7 @@ export default class AutoStore{
     constructor() {
         this._types = []
         this._transmissions = []
+        this._additionalServices = []
         this._devices = []
         this._selectedType = {}
         this._selectedTransmissions = {}
@@ -18,6 +19,10 @@ export default class AutoStore{
 
     setTypes(types){
         this._types = types
+    }
+
+    setAdditionalServices(additionalServices) {
+        this._additionalServices = additionalServices
     }
 
     setTransmission(transmissions){
@@ -50,6 +55,10 @@ export default class AutoStore{
 
     get devices() {
         return this._devices   }
+
+    get additionalServices() {
+        return this._additionalServices
+    }
 
 
     get selectedType() {

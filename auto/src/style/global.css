@@ -30,6 +30,10 @@
     color: #d2d6dc;
 }
 
+.grayColor:hover{
+    color: #fa2534;
+}
+
 .color-black{
     color: black;
     font-weight: bold;

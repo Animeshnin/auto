@@ -52,7 +52,7 @@ const AutoPage = () => {
                 </div>
 
 
-                <FormOrder/>
+                <FormOrder autos={autos}/>
             </div>
 
         </div>

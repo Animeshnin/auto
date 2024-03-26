@@ -121,8 +121,8 @@ const CreateAuto = observer(({show, onHide}) => {
                               onChange={selectFile}
                 />
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant={'success'} onClick={onHide}>Закрыть</Button>
+            <Modal.Footer className={'justify-content-center'}>
+                <Button variant={"danger"} onClick={onHide}>Закрыть</Button>
                 <Button variant={"success"} onClick={addAuto}>Добавить</Button>
             </Modal.Footer>
         </Modal>

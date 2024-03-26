@@ -25,6 +25,13 @@ const Auto = sequelize.define('auto', {
     driveUnit: {type: DataTypes.STRING, allowNull: false}
 })
 
+const AdditionalServices = sequelize.define('additionalServices', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false},
+    price: {type: DataTypes.INTEGER, allowNull: false}
+
+})
+
 const Manager = sequelize.define('manager', {
     idm: {type: DataTypes.INTEGER,primaryKey: true, autoIncrement: true},
     fio: {type: DataTypes.STRING},
@@ -56,5 +63,6 @@ module.exports = {
     Manager,
     Client,
     Brand,
-    Transmission
+    Transmission,
+    AdditionalServices
 }
