@@ -21,8 +21,9 @@ const AutoPage = () => {
     return(
         <div>
             <h1 className={"autoPage__h1"}>Прокат {autos.name}  <span className={'grayColor'}>в ЕКАТЕРИНБУРГЕ</span></h1>
+            <Image width={1160} height={688} src={process.env.REACT_APP_API_URL + autos.img}/>
             <div className={'mt-5 d-flex justify-content-between'}>
-                <Image width={430} height={290} src={process.env.REACT_APP_API_URL + autos.img}/>
+
                 <div className={'characteristic'}>
                     <h2>Характеристики</h2>
                     <div className={'d-flex justify-content-between la'}>

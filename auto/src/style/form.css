@@ -15,11 +15,28 @@
     border: none;
     padding: 10px 2px;
     border-bottom: 1px solid #e32526;
+    font-size: 17px;
 }
+
 
 .date:focus-within {
     outline:1px solid #e32526;
     border: none;
+}
+
+.additionalServices-P{
+    font-size: 18px;
+}
+
+.additionalServices{
+    border-bottom: 1px solid #bebcbc;
+}
+
+.additionalServices-item-p{
+    color: black;
+    font-weight: bold;
+    display: flex;
+    align-items: center
 }
 
 .additionalServices-label{
@@ -29,11 +46,43 @@
 .additionalServices-item{
     display: flex;
     justify-content: space-between;
+    margin: 5px 0;
+}
 
+.additionalServices-item:last-child{
+    margin-bottom: 20px
 }
 
 .padding-left{
     padding-left: 10px
 }
 
+.w-150{
+    width: 150px
+}
 
+.price-info{
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    float: right;
+}
+
+.price{
+    font-size: 24px;
+}
+
+.total__price-order{
+    margin-top: 10px
+}
+
+
+.gray {
+    color: rgb(128, 128, 128);
+    font-size: 16px;
+}
+
+.button-reservation{
+    width: 100%;
+    margin: 20px 0 5px;
+}

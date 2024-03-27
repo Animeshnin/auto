@@ -19,7 +19,15 @@ class AdditionalServicesController {
         return res.json(additionalServices)
     }
 
+    async getOne(req, res){
+        try {
+            let id = req.body
+            let auto = await AdditionalServices.findOne({where: {id}})
+            return res.json(auto)
+        } catch (err){
 
+        }
+    }
 }
 
 module.exports = new AdditionalServicesController()

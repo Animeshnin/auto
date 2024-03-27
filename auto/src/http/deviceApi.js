@@ -29,7 +29,11 @@ export const fetchAdditionalServices = async () => {
 export const createAdditionalServices = async (name, price) => {
     const {data} = await $authHost.post('api/additionalServices/create', {name, price})
     return data
+}
 
+export const fetchOneAdditionalServices = async (id) => {
+    const {data} = await $host.get(`api/additionalServices/additionalServicesControllerOne`, {id})
+    return data
 }
 
 
