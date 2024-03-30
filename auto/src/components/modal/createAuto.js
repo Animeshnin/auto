@@ -16,6 +16,7 @@ const CreateAuto = observer(({show, onHide}) => {
     const [place, setPlace] = useState('')
     const [yearOfIssue, setYearOfIssue] = useState('')
     const [description, setDescription] = useState('')
+    const [sliderImg, setSliderImg] = useState([])
 
 
     useEffect(() => {
@@ -26,8 +27,20 @@ const CreateAuto = observer(({show, onHide}) => {
         fetchTransmission().then(data => auto.setTransmission(data))
     }, [])
 
+
+
+
+
+
     const selectFile = e =>{
         setFile(e.target.files[0])
+    }
+    console.log(file)
+
+
+
+    const addSliderImage = () => {
+        // setSliderImg([...sliderImg, {sliderImg: ])
     }
     const addAuto = () => {
         const formData = new FormData()

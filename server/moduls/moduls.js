@@ -25,6 +25,11 @@ const Auto = sequelize.define('auto', {
     driveUnit: {type: DataTypes.STRING, allowNull: false}
 })
 
+const AutoSlideBar = sequelize.define('autoSlideBar', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    sliderImg: {type: DataTypes.STRING, allowNull: false},
+})
+
 const AdditionalServices = sequelize.define('additionalServices', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
@@ -56,6 +61,9 @@ Auto.belongsTo(Transmission)
 Brand.hasMany(Auto)
 Auto.belongsTo(Brand)
 
+Auto.hasMany(AutoSlideBar, {as: "slider"});
+AutoSlideBar.belongsTo(Auto)
+
 
 
 module.exports = {
@@ -64,5 +72,7 @@ module.exports = {
     Client,
     Brand,
     Transmission,
-    AdditionalServices
+    AdditionalServices,
+    AutoSlideBar
+
 }
