@@ -7,6 +7,7 @@ import {Button} from "react-bootstrap";
 const FormOrder = (autos) =>{
     const {auto} = useContext(Context)
     const [price, setPrice] = useState(0)
+    // const [sum, setSum] =
 
     useEffect(() => {
         fetchAdditionalServices().then(data => {
@@ -26,23 +27,11 @@ const FormOrder = (autos) =>{
         newExpirationDate.splice(2,1, +newExpirationDate[2]+1)
         return newExpirationDate.join('-')
     })
-    console.log(expirationDate)
 
 
 
     let [check, setChecked] = useState([])
-    const checkClick = (e) => {
-        let checkedSquare = e.target.value
-        if(e.target.checked){
-            setChecked([...check, checkedSquare])
-            setPrice(+price+ +e.target.dataset.price)
 
-
-        } else {
-            setChecked(check.filter((word) => word !== checkedSquare))
-            setPrice(price- e.target.dataset.price)
-        }
-    }
 
     let total =+autos.autos.price+ +price
 
@@ -50,6 +39,8 @@ const FormOrder = (autos) =>{
         let newExpirationDate =  date.split('-')
         newExpirationDate.splice(2,1, +newExpirationDate[2]+1)
         setExpirationDate(newExpirationDate.join('-'))
+
+
     }
 
     function calculate(date, expirationDate){
@@ -58,6 +49,20 @@ const FormOrder = (autos) =>{
     }
 
     let sum = calculate(date, expirationDate)
+    const checkClick = (e) => {
+        sum = calculate(date, expirationDate)
+        let checkedSquare = e.target.value
+        if(e.target.checked){
+            setChecked([...check, checkedSquare])
+            setPrice(+price+ +e.target.dataset.price*sum)
+
+
+        } else {
+            setChecked(check.filter((word) => word !== checkedSquare))
+            setPrice(price- e.target.dataset.price*sum)
+
+        }
+    }
 
 
 
@@ -77,7 +82,7 @@ const FormOrder = (autos) =>{
             </div>
             <div className={"additionalServices"}>
                 <h6 className={'additionalServices-P mt-3 mb-3'}>Дополнительные услуги</h6>
-                {auto.additionalServices.map(additionalServices =>
+                {auto.additionalServices.slice(0,5).map(additionalServices =>
                     <div className={'additionalServices-item'}>
                         <div className={'d-flex'}>
                             <input id={additionalServices.id} type={'checkbox'} onClick={(e) => checkClick(e)} value={additionalServices.name} data-price={additionalServices.price} className={'additionalServices-checkbox '}/>

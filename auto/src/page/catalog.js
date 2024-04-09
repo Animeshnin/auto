@@ -14,7 +14,7 @@ const Catalog = observer(()=> {
     }, [])
     console.log(auto)
     return(
-        <div>
+        <div className={'wrapper'}>
         <DeviceList/>
         </div>
     )

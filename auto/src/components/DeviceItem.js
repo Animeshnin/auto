@@ -12,7 +12,9 @@ const DeviceItem = ({auto}) => {
             </div>
             <div className={'card-mid'}>
                 <div className={'card__auto-title'}>
-                    {auto.name}
+
+                    {`${auto.brandId} ${auto.name}`}
+
                 </div>
                 <div className={"card__auto-description"}>
                     <p><span className={'gray'}>ГОД ВЫПУСКА</span> {auto.yearOfIssue}</p>

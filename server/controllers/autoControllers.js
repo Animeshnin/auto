@@ -6,24 +6,25 @@ const {Auto, AutoSlideBar} = require("../moduls/moduls");
 class AutoControllers {
     async create(req, res, next){
         try {
-            let {name, run, price, place, yearOfIssue, description, driveUnit,brandId, transmissionId, slider} = req.body
+            let {name, run, price, place, yearOfIssue, description, driveUnit,brandId, transmissionId} = req.body
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
             const auto = await Auto.create(
                 { name, run, price, place, yearOfIssue, description, driveUnit, img: fileName, brandId, transmissionId}
             )
-
-            if (slider){
-                slider = JSON.parse(slider)
-
-                slider.forEach(i =>
-                    AutoSlideBar.create(
-                        {
-                            sliderImg: i.fileName,
-                            autoIda: auto.id
-                        }
-                    ))
+            const {sliderImage} = req.files
+            if (sliderImage) {
+                let sliderFileName = ''
+                sliderImage.forEach(i =>
+                {
+                    sliderFileName = uuid.v4() + ".jpg"
+                    i.mv(path.resolve(__dirname,'..', 'static', sliderFileName))
+                    AutoSlideBar.create({
+                        sliderImg: sliderFileName,
+                        autoIda: auto.ida
+                    })
+                })
             }
             return res.json(auto)
         } catch (err){
@@ -37,7 +38,11 @@ class AutoControllers {
 
     async getOne(req, res, next){
         const {ida} = req.params
-        const auto = await Auto.findOne({where: {ida}})
+        const auto = await Auto.findOne(
+            {
+                where: {ida},
+                include: [{model: AutoSlideBar, as: 'slider'}]
+            })
         return res.json(auto)
     }
 

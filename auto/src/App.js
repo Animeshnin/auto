@@ -24,7 +24,7 @@ function App() {
 
 
   return (
-    <div className="wrapper">
+
         <BrowserRouter>
         <NavBar/>
             <div className={'content'}>
@@ -32,7 +32,7 @@ function App() {
             </div>
         <Footer/>
         </BrowserRouter>
-    </div>
+
   );
 }
 

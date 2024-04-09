@@ -16,7 +16,7 @@ const CreateAuto = observer(({show, onHide}) => {
     const [place, setPlace] = useState('')
     const [yearOfIssue, setYearOfIssue] = useState('')
     const [description, setDescription] = useState('')
-    const [sliderImg, setSliderImg] = useState([])
+    const [sliderImages, setSliderImages] = useState([null]);
 
 
     useEffect(() => {
@@ -27,9 +27,9 @@ const CreateAuto = observer(({show, onHide}) => {
         fetchTransmission().then(data => auto.setTransmission(data))
     }, [])
 
-
-
-
+    const selectSlider= e =>{
+        setSliderImages(e.target.files)
+    }
 
 
     const selectFile = e =>{
@@ -54,6 +54,9 @@ const CreateAuto = observer(({show, onHide}) => {
         formData.append('brandId', auto.selectedType.id)
         formData.append('yearOfIssue', yearOfIssue)
         formData.append('description', description)
+        for(let image of sliderImages){
+            formData.append('sliderImage', image)
+        }
         autoCreate(formData).then(data => onHide())
     }
 
@@ -132,6 +135,12 @@ const CreateAuto = observer(({show, onHide}) => {
                 <Form.Control className={'mt-3'}
                               type='file'
                               onChange={selectFile}
+                />
+                <Form.Control className={'mt-3'}
+                              type='file'
+                              onChange={selectSlider}
+                              placeholder={"Главная"}
+                              multiple
                 />
             </Modal.Body>
             <Modal.Footer className={'justify-content-center'}>

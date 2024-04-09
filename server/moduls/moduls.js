@@ -55,15 +55,21 @@ const Brand= sequelize.define('brand', {
     name: {type: DataTypes.STRING, unique: true, allowNull: false}
 })
 
+const CarBody = sequelize.define('carBody', {
+    id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false}
+})
+
 Transmission.hasMany(Auto)
 Auto.belongsTo(Transmission)
 
 Brand.hasMany(Auto)
 Auto.belongsTo(Brand)
 
+
+
 Auto.hasMany(AutoSlideBar, {as: "slider"});
 AutoSlideBar.belongsTo(Auto)
-
 
 
 module.exports = {
@@ -73,6 +79,7 @@ module.exports = {
     Brand,
     Transmission,
     AdditionalServices,
-    AutoSlideBar
+    AutoSlideBar,
+    CarBody
 
 }

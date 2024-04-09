@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+     import React, {useContext, useState} from 'react';
 import {CATALOG__ROUTE, LOGIN_ROUTE, REGISTRATION__ROUTE} from "../consts";
 import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Logo from '../img/logo.png'

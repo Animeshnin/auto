@@ -3,10 +3,48 @@
     word-wrap: break-word;
 }
 
-.characteristic{
+body{
+    overflow: auto;
+}
 
+.characteristic{
+    font-size: 20px;
+}
+
+.characteristic__answer{
+    padding-left: 30px
 }
 
 .la{
     padding-top: 20px;
+}
+
+
+
+.rentalConditions-list{
+    display: flex;
+
+}
+
+.rentalConditions-div{
+    display: flex;
+    align-items: center;
+}
+
+.rentalConditions-div:last-child{
+    padding-left: 20px;
+}
+
+.rentalConditions-img{
+    padding-right: 10px;
+}
+
+
+.wrapperSwiper{
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.swiperSlide img{
+    width: 100%;
 }
