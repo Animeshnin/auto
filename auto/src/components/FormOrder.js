@@ -7,13 +7,14 @@ import {Button} from "react-bootstrap";
 const FormOrder = (autos) =>{
     const {auto} = useContext(Context)
     const [price, setPrice] = useState(0)
-    // const [sum, setSum] =
-
+    const [extraPrice, setExtraPrice] = useState(0)
     useEffect(() => {
         fetchAdditionalServices().then(data => {
             auto.setAdditionalServices(data)
         })
     }, [])
+
+
 
     let [date, setDate] = useState(() => {
         const  date = new Date()
@@ -27,13 +28,9 @@ const FormOrder = (autos) =>{
         newExpirationDate.splice(2,1, +newExpirationDate[2]+1)
         return newExpirationDate.join('-')
     })
-
-
-
     let [check, setChecked] = useState([])
 
 
-    let total =+autos.autos.price+ +price
 
     function updateExpirationDate(){
         let newExpirationDate =  date.split('-')
@@ -45,24 +42,34 @@ const FormOrder = (autos) =>{
 
     function calculate(date, expirationDate){
         return expirationDate.split('-').splice(2,1) - date.split('-').splice(2,1)
-
     }
-
-    let sum = calculate(date, expirationDate)
-    const checkClick = (e) => {
-        sum = calculate(date, expirationDate)
+    const checkClick = (e, sum) => {
         let checkedSquare = e.target.value
         if(e.target.checked){
             setChecked([...check, checkedSquare])
-            setPrice(+price+ +e.target.dataset.price*sum)
+
+            setExtraPrice(extraPrice + +e.target.dataset.price)
 
 
         } else {
             setChecked(check.filter((word) => word !== checkedSquare))
-            setPrice(price- e.target.dataset.price*sum)
+            setExtraPrice(extraPrice - e.target.dataset.price)
 
         }
+
     }
+
+    function handleClick(){
+        {console.log(autos.autos.name)}
+        if(check === null){
+             console.log('Доп услуг нету')
+        }
+        console.log(date)
+        console.log(expirationDate)
+
+    }
+
+
 
 
 
@@ -77,7 +84,7 @@ const FormOrder = (autos) =>{
                 </div>
                 <div>
                     <h6 className={'additionalServices-P'}>Дата окончание</h6>
-                    <input className={'date'} type={'date'} value={expirationDate <= date?updateExpirationDate(expirationDate)  : expirationDate} onChange={e=> setExpirationDate(e.target.value)}/>
+                    <input className={'date'} type={'date'} value={expirationDate <= date?updateExpirationDate(expirationDate)  : expirationDate} onChange={e=> {setExpirationDate(e.target.value); calculate(date, expirationDate)}}/>
                 </div>
             </div>
             <div className={"additionalServices"}>
@@ -85,7 +92,7 @@ const FormOrder = (autos) =>{
                 {auto.additionalServices.slice(0,5).map(additionalServices =>
                     <div className={'additionalServices-item'}>
                         <div className={'d-flex'}>
-                            <input id={additionalServices.id} type={'checkbox'} onClick={(e) => checkClick(e)} value={additionalServices.name} data-price={additionalServices.price} className={'additionalServices-checkbox '}/>
+                            <input id={additionalServices.id} type={'checkbox'} onClick={(e) => checkClick(e, calculate(date, expirationDate))} value={additionalServices.name} data-price={additionalServices.price} className={'additionalServices-checkbox '}/>
                             <p className={'padding-left'}>{additionalServices.name}</p>
                         </div>
 
@@ -120,15 +127,19 @@ const FormOrder = (autos) =>{
             </div>
 
             <div className={'total__price-order'}>
-                <span className={'price-info'}>Итого: за <span className={'price'}>{sum === 1? +price + +autos.autos.price: autos.autos.price * sum + price}</span>&#8381; за {sum} суток</span>
+                <span className={'price-info'}>Итого: за <span className={'price'}>{
+                     autos.autos.price * calculate(date, expirationDate) + price + extraPrice * calculate(date, expirationDate)}</span>
+                    &#8381; за {calculate(date, expirationDate)} суток</span>
             </div>
             <div className={'total__price-order'}>
                 <span className={'price-info gray'}>Стоимость: от {autos.autos.price}&#8381; за сутки</span>
             </div>
 
             <div className={'button__order'}>
-                <button className={'button__link link button-reservation'} type={'submit'}>Забронировать</button>
+                <button className={'button__link link button-reservation'} onClick={() => handleClick()} type={'button'}>Забронировать</button>
             </div>
+
+
 
 
         </form>

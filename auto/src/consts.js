@@ -6,3 +6,5 @@ export const ADMIN__ROUTE = '/admin'
 export const CATALOG__ROUTE = '/catalog'
 
 export const AUTO__ROUTE = '/auto'
+
+export const PERSONAL_AREA__ROUTE= '/personalArea'

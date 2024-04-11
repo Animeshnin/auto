@@ -60,6 +60,11 @@ const CarBody = sequelize.define('carBody', {
     name: {type: DataTypes.STRING, unique: true, allowNull: false}
 })
 
+
+const clientOrder = sequelize.define('clientOrder', {
+    id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+
+})
 Transmission.hasMany(Auto)
 Auto.belongsTo(Transmission)
 

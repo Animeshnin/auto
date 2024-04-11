@@ -1,19 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../style/DeviceItem.css'
 import {AUTO__ROUTE} from "../consts";
 import {useNavigate} from "react-router-dom";
+import {fetchGetModelAuto} from "../http/deviceApi";
 const DeviceItem = ({auto}) => {
     const  navigate = useNavigate()
+    const [brandName, setBrandName] = useState('')
+    useEffect(() => {
+        console.log(auto.brandId)
+        fetchGetModelAuto(auto.brandId).then(data =>setBrandName(data))
+    })
     return (
 
-        <div style={{cursor:"pointer"}} className={'card__auto'} onClick={() => navigate(`${AUTO__ROUTE}/${auto.ida}`)}>
+        <div style={{cursor:"pointer"}} className={'card__auto'} onClick={() => navigate(`${AUTO__ROUTE}/${auto.ida}/${auto.brandId}`)}>
             <div className={'card__auto-image'}>
                 <img className={'card__auto-img'}  src={process.env.REACT_APP_API_URL + auto.img} alt={'a'}/>
             </div>
             <div className={'card-mid'}>
                 <div className={'card__auto-title'}>
 
-                    {`${auto.brandId} ${auto.name}`}
+                    {`${brandName} ${auto.name}`}
 
                 </div>
                 <div className={"card__auto-description"}>

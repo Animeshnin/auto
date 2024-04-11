@@ -1,7 +1,7 @@
 import {
     ADMIN__ROUTE, AUTO__ROUTE,
     CATALOG__ROUTE,
-    LOGIN_ROUTE,
+    LOGIN_ROUTE, PERSONAL_AREA__ROUTE,
     REGISTRATION__ROUTE,
 } from "./consts";
 
@@ -12,6 +12,7 @@ import Auth from "./page/auth";
 import Admin from "./page/admin";
 import {Component} from "react";
 import AutoPage from "./page/AutoPage";
+import personalArea from "./page/personalArea";
 export const router = [
     {
         path: LOGIN_ROUTE,
@@ -30,8 +31,12 @@ export const router = [
         Component: Admin
     },
     {
-        path: AUTO__ROUTE + '/:id',
+        path: AUTO__ROUTE + '/:id/:brandId',
         Component: AutoPage
+    },
+    {
+        path: PERSONAL_AREA__ROUTE,
+        Component: personalArea
     }
 ]
 

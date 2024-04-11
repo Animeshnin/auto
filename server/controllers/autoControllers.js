@@ -38,6 +38,7 @@ class AutoControllers {
 
     async getOne(req, res, next){
         const {ida} = req.params
+        const {brandId} = req.params
         const auto = await Auto.findOne(
             {
                 where: {ida},

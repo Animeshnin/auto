@@ -1,0 +1,32 @@
+.personal__area-region{
+    box-shadow: 3px 3px 7px #999999;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.personal__area-img img{
+    border-radius: 10px;
+}
+
+.personal__area-additional__services{
+    background-color: #f2f3f5;
+    padding: 5px
+}
+
+.personal__area-date__calendar{
+    display: flex;
+    gap: 10px
+}
+
+.personal__area-price{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.personal__area-cancel{
+    display: flex;
+    justify-content: flex-end;
+}
+

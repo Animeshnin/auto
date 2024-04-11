@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Context} from "../index";
 import {useParams} from "react-router-dom";
-import {fetchOneAuto} from "../http/deviceApi";
+import {fetchGetModelAuto, fetchOneAuto} from "../http/deviceApi";
 import {Image, Row} from "react-bootstrap";
 import '../style/AutoPage.css'
 import FormOrder from "../components/FormOrder";
@@ -19,36 +19,39 @@ const AutoPage = () => {
     const {auto} = useContext(Context)
     const [autos, setAuto] = useState({slider: []})
     const {id} = useParams()
-    const [focus, setFocus] = useState('')
+    const {brandId} = useParams()
+    console.log(id, brandId)
+    const [brandName, setBrandName] = useState('')
 
     useEffect(()=> {
-        fetchOneAuto(id).then(data =>  setAuto(data))
+        fetchOneAuto(id, brandId).then(data =>  setAuto(data))
 
     }, [])
 
-    function handleClick(e) {
-        setFocus('swiperSideImgHover')
-    }
-    return(
+    useEffect(() => {
+        console.log(brandId)
+        fetchGetModelAuto(brandId).then(data =>setBrandName(data))
+    })
+    return (
         <div>
             <div className={'wrapper'}>
-                <h1 className={"autoPage__h1"}>Прокат {autos.brandId} {autos.name}  <span className={'grayColor'}>в ЕКАТЕРИНБУРГЕ</span></h1>
+                <h1 className={"autoPage__h1"}>Прокат {brandName} {autos.name}  <span className={'grayColor'}>в ЕКАТЕРИНБУРГЕ</span></h1>
 
             </div>
-            <div >
+            <div>
                 <Swiper className={'wrapperSwiper '}
                         modules={[Navigation, Pagination, Scrollbar, A11y]}
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    centeredSlides={true}
-                    onSlideChange={() => console.log('slide change')}
-                    navigation
-                    pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
-                    onSwiper={(swiper) => console.log(swiper)}
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        centeredSlides={true}
+                        onSlideChange={() => console.log('slide change')}
+                        navigation
+                        pagination={{clickable: true}}
+                        scrollbar={{draggable: true}}
+                        onSwiper={(swiper) => console.log(swiper)}
                 >
                     {autos.slider.map((slide) => (
-                        <SwiperSlide style={{width: "1300px"}} >
+                        <SwiperSlide style={{width: "1300px"}}>
                             <Image width={1300} src={process.env.REACT_APP_API_URL + slide.sliderImg}/>
                         </SwiperSlide>
                     ))}
@@ -95,7 +98,7 @@ const AutoPage = () => {
                                 </ul>
                             </div>
                             <div className={'characteristic__answer'}>
-                                <ul >
+                                <ul>
                                     <li className={"color-black"}>{autos.yearOfIssue}</li>
                                     <li className={"color-black"}>{autos.place}</li>
                                     <li className={"color-black"}>есть</li>
@@ -113,12 +116,10 @@ const AutoPage = () => {
                 </div>
 
 
-
                 <FormOrder autos={autos}/>
             </div>
 
         </div>
-
 
 
     )

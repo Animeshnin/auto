@@ -11,13 +11,20 @@ export const createBrand = async (brand) => {
     return data
 }
 
+export const fetchGetModelAuto = async (id) => {
+    const {data} = await $host.get('api/brand/name', {params:{
+            id
+        }})
+    return data
+}
+
 export const fetchAuto = async () => {
     const {data} = await $host.get('api/auto')
     return data
 }
 
-export const fetchOneAuto = async (id) => {
-    const {data} = await $host.get(`api/auto/${id}`)
+export const fetchOneAuto = async (id, brandId) => {
+    const {data} = await $host.get(`api/auto/${id}/${brandId}`)
     return data
 }
 
@@ -26,16 +33,12 @@ export const fetchAdditionalServices = async () => {
     return data
 }
 
+
+
 export const createAdditionalServices = async (name, price) => {
     const {data} = await $authHost.post('api/additionalServices/create', {name, price})
     return data
 }
-
-export const fetchOneAdditionalServices = async (id) => {
-    const {data} = await $host.get(`api/additionalServices/additionalServicesControllerOne`, {id})
-    return data
-}
-
 
 export const fetchBrand = async () => {
     const {data} = await $host.get('api/brand')

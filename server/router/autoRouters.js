@@ -4,6 +4,6 @@ const router = new Router()
 
 router.post('/create', autoControllers.create)
 router.get('/', autoControllers.getAll)
-router.get('/:ida', autoControllers.getOne)
+router.get('/:ida/:brandId', autoControllers.getOne)
 
 module.exports = router // благодаря этой команды другие файлы могут импортировать и использовать данный маршрут
