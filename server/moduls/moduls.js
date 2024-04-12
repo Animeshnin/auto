@@ -63,7 +63,7 @@ const CarBody = sequelize.define('carBody', {
 
 const clientOrder = sequelize.define('clientOrder', {
     id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-
+    additionalServices: {type: DataTypes.ARRAY(DataTypes.STRING,),  allowNull: true}
 })
 Transmission.hasMany(Auto)
 Auto.belongsTo(Transmission)
@@ -85,6 +85,6 @@ module.exports = {
     Transmission,
     AdditionalServices,
     AutoSlideBar,
-    CarBody
-
+    CarBody,
+    clientOrder
 }
