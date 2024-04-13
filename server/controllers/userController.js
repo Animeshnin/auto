@@ -3,9 +3,9 @@ const  bcrypt = require('bcrypt')
 const ApiError = require('../error/ApiError')
 const {Client, Basket, Device} = require('../moduls/moduls')
 
-const generateJwt = (id, email, role)=> {
+const generateJwt = (id, email, role, name, phone, login)=> {
     return jwt.sign({
-        id, email, role},
+        id, email, role, name, phone, login},
         process.env.SECRET_KEY,
         {expiresIn: '24h'}
     )
@@ -36,7 +36,7 @@ class UserControllers {
        }
        const hashPassword = await bcrypt.hash(password, 5)
     const client = await Client.create({fio, passport, email, login, phone, password: hashPassword, role})
-       const token = generateJwt(client.id, client.email, client.role)
+       const token = generateJwt(client.id, client.email, client.role, client.fio, client.phone, client.login)
 
 
        return res.json({token})
@@ -54,7 +54,7 @@ class UserControllers {
         if(!comparePassword){
             return next(ApiError.badRequest('Указан неверный пароль'))
         }
-       const token = generateJwt(client.idc, client.email, client.role)
+       const token = generateJwt(client.idc, client.email, client.role, client.fio,  client.phone, client.login)
        return res.json({token})
 
    }

@@ -46,7 +46,18 @@ class AutoControllers {
             })
         return res.json(auto)
     }
+    async deleteAuto(req, res, next){
+        try {
+            const {id} = req.params
+            const auto = await Auto.findByPk(id)
+            await auto.destroy()
+            res.json(auto)
 
+        } catch (err){
+            next(ApiError.badRequest(err.message))
+
+        }
+    }
 }
 
 module.exports = new AutoControllers()

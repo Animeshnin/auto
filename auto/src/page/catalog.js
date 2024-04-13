@@ -4,6 +4,7 @@ import DeviceItem from "../components/DeviceItem";
 import {Context} from "../index";
 import {fetchAuto} from "../http/deviceApi";
 import DeviceList from "../components/DeviceList";
+import {Container} from "react-bootstrap";
 
 const Catalog = observer(()=> {
     const {auto} = useContext(Context)
@@ -14,9 +15,10 @@ const Catalog = observer(()=> {
     }, [])
     console.log(auto)
     return(
-        <div className={'wrapper'}>
+        <Container className={'wrapper'}>
+
         <DeviceList/>
-        </div>
+        </Container>
     )
 })
 export default Catalog;

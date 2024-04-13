@@ -3,6 +3,7 @@ import '../style/DeviceItem.css'
 import {AUTO__ROUTE} from "../consts";
 import {useNavigate} from "react-router-dom";
 import {fetchGetModelAuto} from "../http/deviceApi";
+import {Col} from "react-bootstrap";
 const DeviceItem = ({auto}) => {
     const  navigate = useNavigate()
     const [brandName, setBrandName] = useState('')
@@ -12,7 +13,7 @@ const DeviceItem = ({auto}) => {
     })
     return (
 
-        <div style={{cursor:"pointer"}} className={'card__auto'} onClick={() => navigate(`${AUTO__ROUTE}/${auto.ida}/${auto.brandId}`)}>
+        <Col  style={{cursor:"pointer"}} className={'card__auto mb-4 '} onClick={() => navigate(`${AUTO__ROUTE}/${auto.ida}/${auto.brandId}`)}>
             <div className={'card__auto-image'}>
                 <img className={'card__auto-img'}  src={process.env.REACT_APP_API_URL + auto.img} alt={'a'}/>
             </div>
@@ -43,7 +44,7 @@ const DeviceItem = ({auto}) => {
                 </div>
             </div>
 
-        </div>
+        </Col>
     );
 }
 

@@ -1,12 +1,13 @@
 .card__auto{
-    width: 380px;
     box-shadow: 3px 3px 7px #999999;
-    margin: 0 5px 20px;
+
 }
+
+
 
 .card__auto-img{
     display:block;
-    height: 250px;
+
     width: 100%;
 }
 

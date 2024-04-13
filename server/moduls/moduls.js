@@ -63,13 +63,24 @@ const CarBody = sequelize.define('carBody', {
 
 const clientOrder = sequelize.define('clientOrder', {
     id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    additionalServices: {type: DataTypes.ARRAY(DataTypes.STRING,),  allowNull: true}
+    name: {type: DataTypes.STRING, allowNull: true},
+    login: {type: DataTypes.STRING},
+    phone: {type: DataTypes.STRING, allowNull: false},
+    date:{type: DataTypes.STRING, allowNull: true},
+    expirationDate: {type: DataTypes.STRING, allowNull: true},
+    placeReceipt:  {type: DataTypes.ARRAY(DataTypes.STRING),  allowNull: true},
+    price: {type: DataTypes.INTEGER, allowNull: true},
+    additionalServices: {type: DataTypes.ARRAY(DataTypes.STRING),  allowNull: true},
+    autoName: {type: DataTypes.STRING, allowNull: false},
+    brandName: {type: DataTypes.STRING, allowNull: false},
+    img: {type: DataTypes.STRING, allowNull: false}
 })
 Transmission.hasMany(Auto)
 Auto.belongsTo(Transmission)
 
 Brand.hasMany(Auto)
 Auto.belongsTo(Brand)
+
 
 
 

@@ -18,6 +18,16 @@ export const fetchGetModelAuto = async (id) => {
     return data
 }
 
+export const deleteClientOrder = async (id) => {
+    const {data} = await $authHost.delete('api/clientOrder/delete/' + id)
+}
+
+export const getAllClientOrder = async()=>{
+    const {data} = await $authHost.get('api/clientOrder/')
+    return data
+}
+
+
 export const fetchAuto = async () => {
     const {data} = await $host.get('api/auto')
     return data
@@ -38,6 +48,22 @@ export const fetchAdditionalServices = async () => {
 export const createAdditionalServices = async (name, price) => {
     const {data} = await $authHost.post('api/additionalServices/create', {name, price})
     return data
+}
+export const createOrder = async (name, login, phone, date, expirationDate, placeReceipt, price, additionalServices, autoName, brandName, img) => {
+    const {data} = await $authHost.post('api/clientOrder/createClientOrder', {name, login, phone,date, expirationDate, placeReceipt, price, additionalServices, autoName, brandName, img})
+    return data
+}
+
+
+export const fetchClientOrder = async (login) => {
+    const {data} = await $authHost.get(`api/clientOrder/${login}`)
+    return data
+}
+
+export const deleteAutoA = async(id) => {
+    const {data} = await $authHost.delete(`api/auto/delete/${id}`)
+    return data
+
 }
 
 export const fetchBrand = async () => {

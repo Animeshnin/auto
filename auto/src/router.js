@@ -35,7 +35,7 @@ export const router = [
         Component: AutoPage
     },
     {
-        path: PERSONAL_AREA__ROUTE,
+        path: PERSONAL_AREA__ROUTE + '/:login',
         Component: personalArea
     }
 ]

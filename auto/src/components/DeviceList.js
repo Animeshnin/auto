@@ -8,9 +8,9 @@ const DeviceList = observer(() => {
     const {auto} = useContext(Context)
     return(
         <div>
-            <Row className='d-flex'>
+            <Row  className='d-flex justify-content-around'>
                 {auto.devices.map(auto =>
-                    <DeviceItem  key={auto.id} auto={auto}/>
+                    <DeviceItem key={auto.id} auto={auto}/>
                 )}
             </Row>
         </div>

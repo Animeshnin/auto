@@ -17,6 +17,7 @@ import autoSvg from '../img/auto.svg'
 
 const AutoPage = () => {
     const {auto} = useContext(Context)
+
     const [autos, setAuto] = useState({slider: []})
     const {id} = useParams()
     const {brandId} = useParams()
@@ -116,7 +117,7 @@ const AutoPage = () => {
                 </div>
 
 
-                <FormOrder autos={autos}/>
+                <FormOrder autos={autos} brandName={brandName}/>
             </div>
 
         </div>
