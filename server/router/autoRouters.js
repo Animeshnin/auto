@@ -4,6 +4,7 @@ const router = new Router()
 
 router.post('/create', autoControllers.create)
 router.get('/', autoControllers.getAll)
+router.get('/getCarBody', autoControllers.getCarBody)
 router.get('/:ida/:brandId', autoControllers.getOne)
 router.delete('/delete/:id', autoControllers.deleteAuto)
 

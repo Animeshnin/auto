@@ -5,17 +5,15 @@ export default class AutoStore{
         this._types = []
         this._transmissions = []
         this._additionalServices = []
+        this._autoBody = []
         this._devices = []
         this._selectedType = {}
         this._selectedTransmissions = {}
-        this._orders = []
-
+        this._selectedAutoBody = {}
         makeAutoObservable(this)
     }
 
-    setOrder(orders){
-        this._orders = orders
-    }
+
 
     setTypes(types){
         this._types = types
@@ -29,6 +27,9 @@ export default class AutoStore{
         this._transmissions = transmissions
     }
 
+    setAutoBody(autoBody){
+        this._autoBody = autoBody
+    }
 
     setDevices(devices){
         this._devices = devices
@@ -42,8 +43,8 @@ export default class AutoStore{
         this._selectedTransmissions = transmission
     }
 
-    get orders(){
-        return this._orders
+    setSelectedAutoBody(autoBody) {
+        this._selectedAutoBody = autoBody
     }
     get types(){
         return this._types
@@ -51,6 +52,10 @@ export default class AutoStore{
 
     get transmissions(){
         return this._transmissions
+    }
+
+    get autoBody() {
+        return this._autoBody
     }
 
     get devices() {
@@ -67,6 +72,10 @@ export default class AutoStore{
 
     get selectedTransmissions(){
         return this._selectedTransmissions
+    }
+
+    get selectedAutoBody(){
+        return this._selectedAutoBody
     }
 
 }

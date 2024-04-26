@@ -32,7 +32,7 @@ const AutoPage = () => {
     useEffect(() => {
         console.log(brandId)
         fetchGetModelAuto(brandId).then(data =>setBrandName(data))
-    })
+    }, [])
     return (
         <div>
             <div className={'wrapper'}>
@@ -40,7 +40,7 @@ const AutoPage = () => {
 
             </div>
             <div>
-                <Swiper className={'wrapperSwiper '}
+                <Swiper className={'wrapper'}
                         modules={[Navigation, Pagination, Scrollbar, A11y]}
                         spaceBetween={50}
                         slidesPerView={1}
@@ -52,8 +52,8 @@ const AutoPage = () => {
                         onSwiper={(swiper) => console.log(swiper)}
                 >
                     {autos.slider.map((slide) => (
-                        <SwiperSlide style={{width: "1300px"}}>
-                            <Image width={1300} src={process.env.REACT_APP_API_URL + slide.sliderImg}/>
+                        <SwiperSlide>
+                            <Image width={"100%"} src={process.env.REACT_APP_API_URL + slide.sliderImg}/>
                         </SwiperSlide>
                     ))}
 
@@ -63,7 +63,7 @@ const AutoPage = () => {
 
             <div>
             </div>
-            <div className={'mt-4 d-flex justify-content-between wrapper'}>
+            <div className={'mt-4 wrapper autoPage'}>
 
 
                 <div className={'rentalConditions'}>
@@ -88,7 +88,7 @@ const AutoPage = () => {
                     </div>
                     <div className={'characteristic'}>
                         <h2>Характеристики</h2>
-                        <div className={'d-flex justify-content-between la'}>
+                        <div className={'characteristic__list'}>
                             <div className={'characteristic__question'}>
                                 <ul>
                                     <li>Год выпуска:</li>
@@ -103,8 +103,8 @@ const AutoPage = () => {
                                     <li className={"color-black"}>{autos.yearOfIssue}</li>
                                     <li className={"color-black"}>{autos.place}</li>
                                     <li className={"color-black"}>есть</li>
-                                    <li className={"color-black"}>{autos.run}</li>
                                     <li className={"color-black"}>{autos.driveUnit}</li>
+                                    <li className={"color-black"}>{autos.run}</li>
 
                                 </ul>
 

@@ -39,12 +39,83 @@ body{
     padding-right: 10px;
 }
 
-
-.wrapperSwiper{
-    width: 1300px;
-    margin: 0 auto;
+.characteristic__list{
+    display: flex;
 }
 
 .swiperSlide img{
     width: 100%;
 }
+
+.autoPage{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1024px){
+    .autoPage{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .autoPage__h1{
+        padding-left: 30px;
+        font-size: 4rem
+    }
+
+
+}
+
+@media screen and (max-width: 600px){
+    .autoPage {
+        display: block;
+    }
+
+
+    .rentalConditions>h5{
+        font-size: 2.8em
+    }
+
+    .rentalConditions-element{
+        display: flex;
+    }
+
+    .rentalConditions-img{
+        width: 80px;
+        padding-right: 0;
+    }
+
+    .rentalConditions-element>p{
+        font-size: 2.5em;
+    }
+
+    .rentalConditions{
+        margin-left: 150px;
+    }
+
+    .characteristic{
+        font-size: 30px
+    }
+
+    .characteristic>h2{
+        font-size: 1.7em;
+        padding-top: 10px
+    }
+
+    .characteristic__list{
+        width: 80%;
+        justify-content: space-between;
+    }
+
+    .characteristic__question>ul>li{
+        font-size: 1.5em;
+
+    }
+
+    .characteristic__answer>ul>li{
+        font-size: 1.5em
+    }
+
+}
+

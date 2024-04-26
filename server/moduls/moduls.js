@@ -25,6 +25,11 @@ const Auto = sequelize.define('auto', {
     driveUnit: {type: DataTypes.STRING, allowNull: false}
 })
 
+const CarBody = sequelize.define('carBody', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false}
+})
+
 const AutoSlideBar = sequelize.define('autoSlideBar', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     sliderImg: {type: DataTypes.STRING, allowNull: false},
@@ -55,10 +60,6 @@ const Brand= sequelize.define('brand', {
     name: {type: DataTypes.STRING, unique: true, allowNull: false}
 })
 
-const CarBody = sequelize.define('carBody', {
-    id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, unique: true, allowNull: false}
-})
 
 
 const clientOrder = sequelize.define('clientOrder', {
@@ -81,8 +82,8 @@ Auto.belongsTo(Transmission)
 Brand.hasMany(Auto)
 Auto.belongsTo(Brand)
 
-
-
+CarBody.hasMany(Auto)
+Auto.belongsTo(CarBody)
 
 Auto.hasMany(AutoSlideBar, {as: "slider"});
 AutoSlideBar.belongsTo(Auto)

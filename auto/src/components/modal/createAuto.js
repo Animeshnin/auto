@@ -1,10 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, Col, Dropdown, Form, Modal, Row} from "react-bootstrap";
 import {Context} from "../../index";
-import {autoCreate, fetchBrand, fetchTransmission} from "../../http/deviceApi";
+import {autoCreate,fetchCarBody, fetchBrand, fetchTransmission} from "../../http/deviceApi";
 import {observer} from "mobx-react-lite";
 import deviceItem from "../DeviceItem";
 import {type} from "@testing-library/user-event/dist/type";
+
+import {Editor, EditorState} from 'draft-js';
+import 'draft-js/dist/Draft.css';
 
 const CreateAuto = observer(({show, onHide}) => {
     const {auto} = useContext(Context)
@@ -17,6 +20,9 @@ const CreateAuto = observer(({show, onHide}) => {
     const [yearOfIssue, setYearOfIssue] = useState('')
     const [description, setDescription] = useState('')
     const [sliderImages, setSliderImages] = useState([null]);
+    const [editorState, setEditorState] = React.useState(
+        () => EditorState.createEmpty(),
+    );
 
 
     useEffect(() => {
@@ -26,6 +32,12 @@ const CreateAuto = observer(({show, onHide}) => {
     useEffect(() => {
         fetchTransmission().then(data => auto.setTransmission(data))
     }, [])
+
+    useEffect(() => {
+        fetchCarBody().then(data => auto.setAutoBody(data))
+    }, [])
+
+
 
     const selectSlider= e =>{
         setSliderImages(e.target.files)
@@ -52,6 +64,7 @@ const CreateAuto = observer(({show, onHide}) => {
         formData.append('driveUnit', driveUnit)
         formData.append('img', file)
         formData.append('brandId', auto.selectedType.id)
+        formData.append('carBodyId', auto.selectedAutoBody.id)
         formData.append('yearOfIssue', yearOfIssue)
         formData.append('description', description)
         for(let image of sliderImages){
@@ -96,6 +109,18 @@ const CreateAuto = observer(({show, onHide}) => {
                                                key={transmission.id}>{transmission.name}</Dropdown.Item> )}
                         </Dropdown.Menu>
                     </Dropdown>
+                    <Dropdown>
+                        <Dropdown.Toggle>{auto.selectedAutoBody.name ||"Выберите кузов"}</Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {auto.autoBody.map(autoBody =>
+                                <Dropdown.Item onClick={() =>
+                                    auto.setSelectedAutoBody(autoBody)}
+                                               key={autoBody.id}>{autoBody.name}</Dropdown.Item> )}
+                        </Dropdown.Menu>
+
+
+                    </Dropdown>
+
                 <Form.Control
                     value={name}
                     onChange={e =>setName(e.target.value)}
@@ -126,11 +151,9 @@ const CreateAuto = observer(({show, onHide}) => {
                     value={yearOfIssue} onChange={e => setYearOfIssue(e.target.value)}
                     placeholder={'Год выпуска'}>
                 </Form.Control>
-                <Form.Control
-                    className={'mt-3'}
-                    value={description} onChange={e => setDescription(e.target.value)}
-                    placeholder={'Описание'}>
-                    </Form.Control>
+
+                    <Editor editorState={editorState} onChange={setEditorState} />
+
                 </Form>
                 <Form.Control className={'mt-3'}
                               type='file'

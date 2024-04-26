@@ -60,4 +60,15 @@ table {
 /*    min-height: calc(90vh - 80px);*/
 /*}*/
 
+.brandBar{
+    display: flex;
+    justify-content: space-around;
+}
 
+.brandBar>li{
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border: 1px solid #e32526;
+    width: 100%;
+    text-align: center;
+}

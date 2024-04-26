@@ -8,3 +8,5 @@ export const CATALOG__ROUTE = '/catalog'
 export const AUTO__ROUTE = '/auto'
 
 export const PERSONAL_AREA__ROUTE= '/personalArea'
+
+export const ABOUT__ROUTE = '/about';

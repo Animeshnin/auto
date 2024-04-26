@@ -6,14 +6,17 @@ import {Row} from "react-bootstrap";
 
 const DeviceList = observer(() => {
     const {auto} = useContext(Context)
+    console.log(auto.devices)
     return(
-        <div>
+
             <Row  className='d-flex justify-content-around'>
                 {auto.devices.map(auto =>
+
                     <DeviceItem key={auto.id} auto={auto}/>
+
                 )}
             </Row>
-        </div>
+
     )
 })
 

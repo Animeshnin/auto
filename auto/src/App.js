@@ -11,6 +11,7 @@ import './style/global.css'
 
 
 
+
 function App() {
     const {user} = useContext(Context)
     let check = localStorage.getItem('token')

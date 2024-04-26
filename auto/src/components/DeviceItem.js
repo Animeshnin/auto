@@ -13,7 +13,7 @@ const DeviceItem = ({auto}) => {
     })
     return (
 
-        <Col  style={{cursor:"pointer"}} className={'card__auto mb-4 '} onClick={() => navigate(`${AUTO__ROUTE}/${auto.ida}/${auto.brandId}`)}>
+        <Col xl={4} lg={5} md={5} sm={9} xs={11} style={{cursor:"pointer"}} className={'card__auto mb-4 '} onClick={() => navigate(`${AUTO__ROUTE}/${auto.ida}/${auto.brandId}`)}>
             <div className={'card__auto-image'}>
                 <img className={'card__auto-img'}  src={process.env.REACT_APP_API_URL + auto.img} alt={'a'}/>
             </div>
@@ -31,16 +31,16 @@ const DeviceItem = ({auto}) => {
                 <div className={'card__auto-price'}>
                     <div className={'card-auto-price oneDay'}>
                         <h5>1 сутки</h5>
-                        <p>от <span className={'fz-18'}>{auto.price} р.</span></p>
+                        <p>от <span className={'price-catalog'}>{auto.price} р.</span></p>
                     </div>
                     <div className={'card-auto-price threeDay'}>
                         <h5>3 суток</h5>
-                        <p>от <span className={'fz-18'}>{auto.price * 3} р.</span></p>
+                        <p>от <span className={'price-catalog'}>{auto.price * 3} р.</span></p>
                     </div>
                 </div>
                 <div className={'card__auto-button'}>
-                    <a href={''} className={'default-button border-gray'}>Подробнее</a>
-                    <a href={''} className={'default-button border-red'}>Забронировать</a>
+                    <a href={''} className={'default-button border-gray mobile-button'}>Подробнее</a>
+                    <a href={''} className={'default-button border-red mobile-button'}>Забронировать</a>
                 </div>
             </div>
 

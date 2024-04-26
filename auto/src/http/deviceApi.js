@@ -28,8 +28,16 @@ export const getAllClientOrder = async()=>{
 }
 
 
-export const fetchAuto = async () => {
-    const {data} = await $host.get('api/auto')
+export const fetchAuto = async (brandId, carBodyId) => {
+    const {data} = await $host.get('api/auto', {params : {
+            brandId, carBodyId
+        }})
+
+    return data
+}
+
+export const fetchCarBody = async () =>{
+    const {data} = await $host.get('api/auto/getCarBody')
     return data
 }
 
@@ -42,9 +50,6 @@ export const fetchAdditionalServices = async () => {
     const {data} = await $host.get('api/additionalServices')
     return data
 }
-
-
-
 export const createAdditionalServices = async (name, price) => {
     const {data} = await $authHost.post('api/additionalServices/create', {name, price})
     return data
@@ -67,11 +72,11 @@ export const deleteAutoA = async(id) => {
 }
 
 export const fetchBrand = async () => {
-    const {data} = await $host.get('api/brand')
+    const {data} = await $authHost.get('api/brand')
     return data
 }
 
 export const fetchTransmission = async () => {
-    const {data} = await $host.get('api/transmission')
+    const {data} = await $authHost.get('api/transmission')
     return data
 }

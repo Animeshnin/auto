@@ -92,19 +92,19 @@ const FormOrder = (autos, brandName) =>{
     return(
         <form className={'form'}>
             <div className={'form__border-bottom'}>
-                <div className={''}>
+                <div className={'calendar'}>
                     <h6 className={'additionalServices-P'}>Дата начала</h6>
                     <input className={'date'} type={'date'} value={date} onChange={e=> setDate(e.target.value)} id={'date'}/>
 
                 </div>
-                <div>
+                <div className={'calendar'}>
                     <h6 className={'additionalServices-P'}>Дата окончание</h6>
                     <input className={'date'} type={'date'} value={expirationDate <= date?updateExpirationDate(expirationDate)  : expirationDate} onChange={e=> {setExpirationDate(e.target.value); calculate(date, expirationDate)}}/>
                 </div>
             </div>
             <div className={"additionalServices"}>
                 <h6 className={'additionalServices-P mt-3 mb-3'}>Дополнительные услуги</h6>
-                {auto.additionalServices.slice(0,5).map(additionalServices =>
+                {auto.additionalServices.map(additionalServices =>
                     <div className={'additionalServices-item'}>
                         <div className={'d-flex'}>
                             <input id={additionalServices.id} type={'checkbox'} onClick={(e) => checkClick(e, calculate(date, expirationDate))} value={additionalServices.name} data-price={additionalServices.price} className={'additionalServices-checkbox '}/>
@@ -120,22 +120,22 @@ const FormOrder = (autos, brandName) =>{
                 <h6 className={'additionalServices-P mt-3 mb-3'}>Подача к указанному адресу</h6>
             <div className={'additionalServices-item'}>
                  <div className={'d-flex'}>
-                     <input type={"checkbox"} onClick={(e) => clickPlaceReceipt(e)} value={'В пределах города'}/>
+                     <input type={"checkbox"} className={'additionalServices-checkbox'} onClick={(e) => clickPlaceReceipt(e)} value={'В пределах города'}/>
                      <p className={'padding-left'}>В пределах города</p>
                  </div>
                 <p className={'additionalServices-item-p'}>от 750 руб</p>
             </div>
             <div className={'additionalServices-item'}>
                 <div className={'d-flex'}>
-                    <input type={"checkbox"} onClick={(e) => clickPlaceReceipt(e)} value={'В аэропорт'}/>
+                    <input type={"checkbox"} className={'additionalServices-checkbox'} onClick={(e) => clickPlaceReceipt(e)} value={'В аэропорт'}/>
                     <p className={'padding-left'}>В аэропорт</p>
                 </div>
                     <p className={'additionalServices-item-p'}>от 750 руб</p>
                 </div>
                 <div className={'additionalServices-item'}>
                     <div className={'d-flex'}>
-                        <input type={"checkbox"} onClick={(e) => clickPlaceReceipt(e)} value={'Выдача/приемка автомобиля в нерабочее время (20:30 - 09:00)'}/>
-                        <p className={'padding-left w-150'}>Выдача/приемка автомобиля в нерабочее время (20:30 - 09:00)</p>
+                        <input type={"checkbox"} className={'additionalServices-checkbox'} onClick={(e) => clickPlaceReceipt(e)} value={'Выдача/приемка автомобиля в нерабочее время (20:30 - 09:00)'}/>
+                        <p className={'padding-left razmer'}>Выдача/приемка автомобиля в нерабочее время (20:30 - 09:00)</p>
                     </div>
                     <p className={'additionalServices-item-p'}>от 750 руб.</p>
                 </div>
