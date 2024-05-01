@@ -10,3 +10,5 @@ export const AUTO__ROUTE = '/auto'
 export const PERSONAL_AREA__ROUTE= '/personalArea'
 
 export const ABOUT__ROUTE = '/about';
+
+export const CONTACTOR__ROUTE = '/contact';

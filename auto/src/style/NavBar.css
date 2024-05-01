@@ -62,6 +62,10 @@
 
 }
 
+.div__burger{
+    display: none;
+}
+
 .header__fuflo{
     display: flex;
     gap: 30px;
@@ -74,9 +78,7 @@
     background-color: white;
 }
 
-@media screen and  (min-width: 1001px) {
-        
-}
+
 
 @media screen  and (max-width: 1000px){
     .header__fuflo {
@@ -107,6 +109,16 @@
         font-size: 30px;
     }
 
+    .div__burger{
+        display: block;
+        z-index: 1;
+    }
+
+    .list__link{
+        font-size: 16px;
+    }
+
+
 
 
     .header__menu-button{
@@ -129,7 +141,26 @@
     }
 
     .button__link{
-        font-size: 30px;
+        font-size: 16px;
+    }
+
+}
+
+@media screen and  (max-width: 1160px) {
+    .header__flex{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .header__authorization{
+        display: flex;
+
+    }
+
+    .burgerLon{
+        padding: 5px 15px;
     }
 
 }

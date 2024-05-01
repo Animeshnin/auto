@@ -13,7 +13,7 @@ const DeviceItem = ({auto}) => {
     })
     return (
 
-        <Col xl={4} lg={5} md={5} sm={9} xs={11} style={{cursor:"pointer"}} className={'card__auto mb-4 '} onClick={() => navigate(`${AUTO__ROUTE}/${auto.ida}/${auto.brandId}`)}>
+        <Col xl={4} lg={5} md={6} sm={9} xs={11} style={{cursor:"pointer"}} className={'card__auto mb-4 '} onClick={() => navigate(`${AUTO__ROUTE}/${auto.ida}/${auto.brandId}`)}>
             <div className={'card__auto-image'}>
                 <img className={'card__auto-img'}  src={process.env.REACT_APP_API_URL + auto.img} alt={'a'}/>
             </div>
@@ -39,8 +39,13 @@ const DeviceItem = ({auto}) => {
                     </div>
                 </div>
                 <div className={'card__auto-button'}>
-                    <a href={''} className={'default-button border-gray mobile-button'}>Подробнее</a>
-                    <a href={''} className={'default-button border-red mobile-button'}>Забронировать</a>
+                    <div>
+                        <a href={''} className={'default-button border-gray mobile-button asddasd'}>Подробнее</a>
+                    </div>
+                    <div>
+                        <a href={''} className={'default-button border-red mobile-button asqq'}>Забронировать</a>
+
+                    </div>
                 </div>
             </div>
 

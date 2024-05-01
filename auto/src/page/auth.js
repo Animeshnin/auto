@@ -96,9 +96,9 @@ const Auth = observer(() => {
                         <div className={'flex__div'}>
                             <div className={'registration'}>
                                 Нет аккаунта? <NavLink to={REGISTRATION__ROUTE}
-                                                       className={'gray'}>Зарегистрируйся!</NavLink>
+                                                       className={'registration__gray'}>Зарегистрируйся!</NavLink>
                             </div>
-                            <button onClick={click} type={'button'} className={'button__link'}>Войти</button>
+                            <button onClick={click} type={'button'} className={'button__link registration__button'}>Войти</button>
                         </div>
 
                     </form>

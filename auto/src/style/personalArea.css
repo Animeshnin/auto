@@ -27,3 +27,34 @@
     justify-content: flex-end;
 }
 
+
+.personal__area-img>img{
+    width: 300px;
+    height: 300px;
+}
+
+@media screen and (max-width: 1000px){
+    .personal__area-region{
+        margin: 0 auto;
+        width: 100%;
+
+    }
+
+    .duda{
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 850px){
+
+    .personal__area-img>img{
+        width: 100%;
+    }
+
+    .personal__area-region{
+        display: block;
+    }
+}
+
+
+

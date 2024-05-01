@@ -148,7 +148,7 @@ const FormOrder = (autos, brandName) =>{
                     &#8381; за {calculate(date, expirationDate)} суток</span>
             </div>
             <div className={'total__price-order'}>
-                <span className={'price-info gray'}>Стоимость: от {autos.autos.price}&#8381; за сутки</span>
+                <span className={'price-info gray'}>Стоимость: от <span className={'price'}>{autos.autos.price}</span>&#8381; за сутки</span>
             </div>
 
             <div className={'button__order'}>

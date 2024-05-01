@@ -31,7 +31,7 @@ function App() {
             <div className={'content'}>
                 <AppRouter/>
             </div>
-        <Footer/>
+        {/*<Footer/>*/}
         </BrowserRouter>
 
   );

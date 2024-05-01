@@ -91,118 +91,51 @@
     margin: 20px 0 5px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px){
+    .autoPage__h1{
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 768px){
     .form{
-        margin: 25px auto;
-        width: 80%
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .swiper-button-prev{
+        width: 12px;
+    }
+
+
+
+    .price-info{
+        float: none;
+    }
+
+    .button-reservation{
+        font-size: 18px;
     }
 
     .form__border-bottom{
-
-    }
-
-    .calendar{
-        width: 49%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: block;
     }
 
     .date{
-        width: 90%;
-        font-size: 2.3em;
-        text-align: center;
+        width: 100%;
     }
 
-    .additionalServices-P{
-        font-size: 2.3em;
-    }
 
-    .padding-left{
-        font-size: 2em;
-
-    }
-    .additionalServices-item-p{
-        font-size: 2em;
-
-
-    }
-
-    .additionalServices{
-        gap: 15px
-    }
-    .razmer{
-        width: 500px;
-    }
-
-    .price-info{
-        font-size: 2.4em;
-    }
-
-    .price{
-        font-size: 1em;
-
-    }
-
-    .button-reservation{
-        font-size: 2em
-    }
-
-    .additionalServices-checkbox{
-        transform: scale(2);
-    }
 }
 
 
-@media screen and (max-width: 400px) {
-
-
-    .calendar{
-        width: 49%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .date{
-        width: 90%;
-        font-size: 3em;
-        text-align: center;
-    }
-
-    .additionalServices-P{
-        font-size: 3em;
-    }
-
-    .padding-left{
-        font-size: 2.7em;
-
-    }
+@media screen and (max-width: 400px){
     .additionalServices-item-p{
-        font-size: 2.7em;
-
+        font-size: 14px;
     }
 
-    .additionalServices{
-        gap: 15px
-    }
-    .razmer{
-        width: 500px;
-    }
-
-    .price-info{
-        font-size: 2.4em;
-    }
-
-    .price{
-        font-size: 1em;
-
-    }
-
-    .button-reservation{
-        font-size: 2em
+    .form{
+        margin: 20px auto;
+        width: 95%;
     }
 }
-
-
-

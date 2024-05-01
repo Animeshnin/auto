@@ -7,7 +7,7 @@
 
 .card__auto-img{
     display:block;
-
+    height: 410px;
     width: 100%;
 }
 
@@ -109,8 +109,10 @@
 
 @media screen and (max-width: 768px){
     .card__auto-title{
-        font-size: 30px
+        font-size: 24px
     }
+
+
 
     .card__auto-description>p{
         font-size: 24px;
@@ -143,19 +145,19 @@
 
 
     .card__auto-title{
-        font-size: 40px
+        font-size: 24px
     }
 
     .card__auto-description>p{
-        font-size: 30px
+        font-size: 20px
     }
 
     .gray{
-        font-size: 30px
+        font-size: 22px
     }
 
     .card-auto-price>h5{
-        font-size: 30px
+        font-size: 20px
     }
 
     .price-catalog{
@@ -166,16 +168,43 @@
     }
 
     .card-auto-price>p{
-        font-size: 45px
+        font-size: 24px
     }
 
     .price-catalog{
-        font-size: 40px;
+        font-size: 24px;
     }
 
     .mobile-button{
-        font-size: 30px
+        font-size: 20px
     }
+}
+
+@media screen and (max-width: 480px){
+    .card__auto-button{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card__auto-button>div:not(:last-child){
+        padding-bottom: 20px;
+
+    }
+
+    .mobile-button{
+        width: 100%;
+
+    }
+
+    .asddasd{
+        padding: 0 120px
+    }
+
+    .asqq{
+        padding: 0 88px;
+    }
+
 }
 
 

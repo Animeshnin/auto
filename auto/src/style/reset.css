@@ -72,3 +72,23 @@ table {
     width: 100%;
     text-align: center;
 }
+
+@media screen and  (max-width: 1160px) {
+    .wrapper{
+        width: 100%;
+    }
+
+
+}
+
+@media screen and  (max-width: 540px) {
+    .brandBar{
+        display: block;
+        margin-bottom: 0;
+    }
+
+    .brandBar>li{
+        display: block;
+        margin-bottom: 0;
+    }
+}

@@ -54,7 +54,7 @@ function PersonalArea() {
                     </div>
                     <div className={'personal__area-region'}>
                         <div className={'personal__area-img'}>
-                            <Image src={process.env.REACT_APP_API_URL + clientOrder[0].img} width={300}/>
+                            <Image src={process.env.REACT_APP_API_URL + clientOrder[0].img} />
                         </div>
                         <div className={'personal__area-text'}>
                             <div className="personal__area-name__auto">
@@ -84,7 +84,7 @@ function PersonalArea() {
                                 <h4>{clientOrder[0].price} руб.</h4>
                             </div>
                             <div className={'personal__area-cancel'}>
-                                <button onClick={() => handleDeleteClick(clientOrder[0].id)}>Отменить</button>
+                                <button className={'button__link link button-reservation duda'} onClick={() => handleDeleteClick(clientOrder[0].id)}>Отменить</button>
                                 {console.log(clientOrder[0].id)}
                             </div>
 
