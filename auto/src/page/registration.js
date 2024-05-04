@@ -17,7 +17,6 @@ const Registration = observer(() => {
     const {user} = useContext(Context)
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE
-
     const navigate = useNavigate()
     const [fio, setFio] = useState('')
     const [passport, setPassport] = useState('')
@@ -30,7 +29,6 @@ const Registration = observer(() => {
         try {
             let data;
                 data = await registration(fio, passport, phone, email, login, password)
-                console.log(data)
             user.setUser(user)
             user.setIsAuth(true)
             navigate(CATALOG__ROUTE)

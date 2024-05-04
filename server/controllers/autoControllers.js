@@ -78,7 +78,7 @@ class AutoControllers {
             res.json(auto)
 
         } catch (err){
-            next(ApiError.badRequest(err.message))
+                next(ApiError.badRequest(err.message))
 
         }
     }

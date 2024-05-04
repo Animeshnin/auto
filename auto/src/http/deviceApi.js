@@ -80,3 +80,8 @@ export const fetchTransmission = async () => {
     const {data} = await $authHost.get('api/transmission')
     return data
 }
+
+export const statusConfirmation = async (id) => {
+    const {data} = await $authHost.put('api/clientOrder/createClientOrderPut', {id, status: "Подтверждено"})
+    return data
+}

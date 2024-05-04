@@ -57,4 +57,16 @@
 }
 
 
+.color__red{
+    color: red;
+}
 
+.color__green{
+    color: #40aa54;
+}
+
+.personal__area-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

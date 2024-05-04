@@ -5,8 +5,8 @@ const {DataTypes} = require('sequelize')
 const Client = sequelize.define('client', {
     idc: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     fio: {type: DataTypes.STRING},
-    passport: {type: DataTypes.STRING, unique: true },
-    phone: {type: DataTypes.STRING, unique: true},
+    passport: {type: DataTypes.STRING, unique: true, allowNull: true },
+    phone: {type: DataTypes.STRING, unique: true, allowNull: true },
     email: {type: DataTypes.STRING, unique: true},
     login: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
@@ -74,6 +74,7 @@ const clientOrder = sequelize.define('clientOrder', {
     additionalServices: {type: DataTypes.ARRAY(DataTypes.STRING),  allowNull: true},
     autoName: {type: DataTypes.STRING, allowNull: false},
     brandName: {type: DataTypes.STRING, allowNull: false},
+    status: {type: DataTypes.STRING, allowNull: true},
     img: {type: DataTypes.STRING, allowNull: false}
 })
 Transmission.hasMany(Auto)

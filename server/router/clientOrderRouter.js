@@ -6,5 +6,7 @@ router.post('/createClientOrder', clientOrderController.create)
 router.get('/:login', clientOrderController.getClientOrder)
 router.delete('/delete/:id', clientOrderController.delete)
 router.get('/', clientOrderController.getAllClientOrder)
+router.put('/createClientOrderPut', clientOrderController.statusConfirmation)
+
 
 module.exports = router

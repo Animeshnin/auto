@@ -12,10 +12,10 @@ const BrandBar = observer(() => {
         if (activeAutoBodyId === autoBody.id) {
             // Если текущий элемент уже активен, сбрасываем его активность
             setActiveAutoBodyId(null);
-            auto.setSelectedAutoBody(null); // Сбрасываем выбранный элемент
+            auto.setSelectedType(null); // Сбрасываем выбранный элемент
         } else {
             setActiveAutoBodyId(autoBody.id);
-            auto.setSelectedAutoBody(autoBody);
+            auto.setSelectedType(autoBody);
         }
     };
 

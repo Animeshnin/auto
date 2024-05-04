@@ -6,6 +6,8 @@ import {fetchAdditionalServices} from "../http/deviceApi";
 import CreateAdditionalServices from "../components/modal/createAdditionalServices";
 import ClientOrder from "../components/modal/clientOrder";
 import DeleteAuto from "../components/modal/delete/deleteAuto";
+import CreateAdmin from "../components/modal/createAdmin";
+import DeleteAdmin from "../components/modal/delete/deleteAdmin";
 
 const Admin = () => {
     const [autoVisible, setAutoVisible] = useState(false)
@@ -13,6 +15,8 @@ const Admin = () => {
     const [additionalServices, setAdditionalServices] = useState(false)
     const [clientOrder, setClientOrder] = useState(false)
     const [deleteAuto, setDeleteAuto] = useState(false)
+    const [createAdmin, setCreateAdmin] = useState(false)
+    const [deleteAdmin, setDeleteAdmin] = useState(false)
     return(
     <Container className={'d-flex flex-column'}>
         <Button variant={'success'} onClick={() => setAutoVisible(true)}>Добавить машину</Button>
@@ -25,6 +29,10 @@ const Admin = () => {
         <ClientOrder show={clientOrder} onHide={() => setClientOrder(false)}/>
         <Button variant={'danger'} onClick={() => setDeleteAuto(true)}>Удалить авто</Button>
         <DeleteAuto show={deleteAuto} onHide={() => setDeleteAuto(false)}/>
+        <Button variant={'danger'} onClick={() => setCreateAdmin(true)}>Добавить Админа</Button>
+        <CreateAdmin show={createAdmin} onHide={() => setCreateAdmin(false)}/>
+        {/*<Button variant={"danger"} onClick={() => setDeleteAdmin(true)}>Удалить Админа</Button>*/}
+        {/*<DeleteAdmin show={deleteAdmin} onHide={() => setDeleteAdmin(false)}/>*/}
     </Container>
     )
 }

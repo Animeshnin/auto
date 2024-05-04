@@ -57,16 +57,17 @@ function PersonalArea() {
                             <Image src={process.env.REACT_APP_API_URL + clientOrder[0].img} />
                         </div>
                         <div className={'personal__area-text'}>
-                            <div className="personal__area-name__auto">
-                                <h3>{brandName} </h3>
-                            </div>
                             <div className={'personal__area-additional__services'}>
                                 <h4>Дополнительные услуги</h4>
                                 <ul className={''}>
                                     {clientOrder[0].additionalServices.map((adko, index) =>
-                                        <li>{index+1}) {adko}</li>
+                                        <li>{index + 1}) {adko}</li>
                                     )}
                                 </ul>
+                            </div>
+                            <div className={'d-flex pb-2'}>
+                                <p>Статус:</p>
+                                <p className={clientOrder[0].status ? "color__green" : "color__red"}>{clientOrder[0].status ? "Принято" : "В обработке"}</p>
                             </div>
                         </div>
                         <div className={'personal__area-date'}>
@@ -75,7 +76,7 @@ function PersonalArea() {
 
                             </div>
                             <div className={'personal__area-date__calendar'}>
-                                <p>{parseDate(clientOrder[0].date)} - {parseDate(clientOrder[0].expirationDate)}</p>
+                            <p>{parseDate(clientOrder[0].date)} - {parseDate(clientOrder[0].expirationDate)}</p>
                             </div>
                         </div>
                         <div className={'personal__area-price'}>
@@ -83,6 +84,7 @@ function PersonalArea() {
                                 <h3>Общая стоимость</h3>
                                 <h4>{clientOrder[0].price} руб.</h4>
                             </div>
+
                             <div className={'personal__area-cancel'}>
                                 <button className={'button__link link button-reservation duda'} onClick={() => handleDeleteClick(clientOrder[0].id)}>Отменить</button>
                                 {console.log(clientOrder[0].id)}

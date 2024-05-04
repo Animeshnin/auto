@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const  bcrypt = require('bcrypt')
 const ApiError = require('../error/ApiError')
 const {Client, Basket, Device} = require('../moduls/moduls')
+const err = require("../error/ApiError");
 
 const generateJwt = (id, email, role, name, phone, login)=> {
     return jwt.sign({
@@ -13,33 +14,38 @@ const generateJwt = (id, email, role, name, phone, login)=> {
 
 class UserControllers {
    async registration(req, res, next){
-    const {fio, passport, phone, email, login, password, role} = req.body
-       if(!email || !password) {
-           return next(ApiError.badRequest('Некорректный email или пароль'))
+       try {
+           const {fio, passport, phone, email, login, password, role} = req.body
+           if(!email || !password) {
+               return next(ApiError.badRequest('Некорректный email или пароль'))
+           }
+
+           const candidateMail = await Client.findOne({where: {email}});
+           const candidateNumberPhone = await Client.findOne({where: {phone}});
+           const candidatePassport = await Client.findOne({where: {passport}})
+           const candidateLogin = await Client.findOne({where: {login}})
+           if(candidateMail){
+               return next(ApiError.badRequest('Пользователь с таким email уже существуте'))
+           }
+           if(candidateNumberPhone){
+               return next(ApiError.badRequest('Пользователь с таким номером телефона уже существуте'))
+           }
+           if(candidatePassport){
+               return next(ApiError.badRequest('Пользователь с таким номером паспорта уже существуте'))
+           }
+           if(candidateLogin){
+               return next(ApiError.badRequest('Пользователь с таким логином уже существуте'))
+           }
+           const hashPassword = await bcrypt.hash(password, 5)
+           const client = await Client.create({fio, passport, email, login, phone, password: hashPassword, role})
+           const token = generateJwt(client.id, client.email, client.role, client.fio, client.phone, client.login)
+
+
+           return res.json({token})
+       } catch (e){
+           next(ApiError.badRequest(e.message))
        }
 
-       const candidateMail = await Client.findOne({where: {email}});
-       const candidateNumberPhone = await Client.findOne({where: {phone}});
-       const candidatePassport = await Client.findOne({where: {passport}})
-       const candidateLogin = await Client.findOne({where: {login}})
-       if(candidateMail){
-            return next(ApiError.badRequest('Пользователь с таким email уже существуте'))
-       }
-       if(candidateNumberPhone){
-           return next(ApiError.badRequest('Пользователь с таким номером телефона уже существуте'))
-       }
-       if(candidatePassport){
-           return next(ApiError.badRequest('Пользователь с таким номером паспорта уже существуте'))
-       }
-       if(candidateLogin){
-           return next(ApiError.badRequest('Пользователь с таким логином уже существуте'))
-       }
-       const hashPassword = await bcrypt.hash(password, 5)
-    const client = await Client.create({fio, passport, email, login, phone, password: hashPassword, role})
-       const token = generateJwt(client.id, client.email, client.role, client.fio, client.phone, client.login)
-
-
-       return res.json({token})
    }
 
    async login(req, res, next){
@@ -66,6 +72,23 @@ class UserControllers {
            return res.json({token})
        }
 
+    }
+
+    async deleteAdmin(req, res, next){
+       try {
+           const {id} = req.params
+           const client = await Client.findByPk(id)
+           await client.destroy()
+           res.json(client)
+       } catch (err){
+           next(ApiError.badRequest(err.message))
+       }
+    }
+
+    async getAllAdmin(req, res){
+        let client = await Client.findAndCountAll({where: {role:'ADMIN'}})
+        client = client.rows
+        return res.json(client)
     }
 
 

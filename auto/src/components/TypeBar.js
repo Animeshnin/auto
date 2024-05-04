@@ -10,8 +10,8 @@ const TypeBar = observer(() => {
             {auto.types.map(type =>
             <ListGroup.Item
             style={{cursor:'pointer'}}
-            variant={type.id === auto.selectedType.id ? "danger" : ""}
-            onClick={() => auto.setSelectedType(type)}
+            variant={type.id === auto.selectedAutoBody.id ? "danger" : ""}
+            onClick={() => auto.setSelectedAutoBody(type)}
             key={type.id}>
                 {type.name}
             </ListGroup.Item>

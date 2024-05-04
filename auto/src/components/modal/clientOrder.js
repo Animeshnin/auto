@@ -1,7 +1,7 @@
 import {observer} from "mobx-react-lite";
 import {Button, Modal} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
-import {deleteAdditionalServices, deleteClientOrder, getAllClientOrder} from "../../http/deviceApi";
+import {deleteAdditionalServices, deleteClientOrder, getAllClientOrder, statusConfirmation} from "../../http/deviceApi";
 import {set} from "mobx";
 
 const clientOrder = observer(({show, onHide}) => {
@@ -18,11 +18,14 @@ const clientOrder = observer(({show, onHide}) => {
     }, [clientOrder])
 
     function handleDeleteClick(id){
-        deleteClientOrder(id).then(
+        deleteClientOrder(id).then().catch(error => alert(error.response.data.message))
+    }
+
+    function handleUpdateClick(id){
+        statusConfirmation(id).then(
             window.location.reload()
-        ).catch(
-            error => alert(error.response.data.message)
-        )
+
+        ).catch(error => alert(error.response.data.message))
     }
 
 
@@ -50,6 +53,8 @@ const clientOrder = observer(({show, onHide}) => {
                                 <th>Доп. услуги</th>
                                 <th>Цена</th>
                                 <th>Удалить</th>
+                                <th>Подтвердить</th>
+                                <th>Статус</th>
 
                             </tr>
                             {dataLoaded? clientOrder.map((order) =>
@@ -65,7 +70,9 @@ const clientOrder = observer(({show, onHide}) => {
                                     <p>{index+1}){services}</p>
                                     )}</td>
                                     <td style={{padding: "10px"}}>{order.price}руб</td>
-                                    <td><Button variant={"danger"} onClick={() => handleDeleteClick(order.id)}>Удалить {order.id}</Button></td>
+                                    <td><button onClick={() => handleDeleteClick(order.id)}>Удалить {order.id}</button></td>
+                                    <td><button onClick={() => handleUpdateClick(order.id)}>Подтвердить</button></td>
+                                    <td>{order.status? "Подтвержденно": "В обработке"}</td>
                                 </tr>
 
                             ): <p>эээ ну хз</p>}
