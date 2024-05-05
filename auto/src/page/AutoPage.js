@@ -63,7 +63,7 @@ const AutoPage = () => {
 
             <div>
             </div>
-            <div className={'mt-4 wrapper autoPage'}>
+            <div className={'mt-4 wrapper autoPage pb-4'}>
 
 
                 <div className={'rentalConditions'}>

@@ -1,4 +1,9 @@
-
+.wrapper__footer{
+    width: 1160px;
+    margin: 0 auto;
+    min-height: 100%;
+    padding: 20px 20px;
+}
 
 .footer__flex{
     display: flex;
@@ -6,8 +11,29 @@
     position: relative;
     justify-content: space-between;
     padding-bottom: 20px;
+    min-height: 100%;
 }
 
 .footer__copyright{
     font-size: 14px;
+}
+
+
+@media screen and (max-width: 1160px){
+    .wrapper__footer{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 768px){
+    .footer__flex{
+        display: block;
+        text-align: center;
+    }
+    .footer__copyright{
+        display: block;
+        text-align: center;
+    }
+
 }

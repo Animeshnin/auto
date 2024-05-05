@@ -27,6 +27,8 @@ footer, header, hgroup, menu, nav, section {
 body {
     line-height: 1;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 ol, ul {
     list-style: none;
@@ -92,3 +94,5 @@ table {
         margin-bottom: 0;
     }
 }
+
+

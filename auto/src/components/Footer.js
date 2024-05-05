@@ -5,7 +5,7 @@ function Footer() {
     return (
 
         <footer className={'footer'}>
-            <div className={'wrapper'}>
+            <div className={'wrapper__footer'}>
                 <div className={'footer__flex'}>
                     <div className={'footer__phone'}>
                         +7 (800) 555-80-33

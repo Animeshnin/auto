@@ -66,9 +66,8 @@ const Auth = observer(() => {
                                 <i className="fa-regular fa-envelope"></i>
                             </div>
                             <div>
-                                <h5>Email</h5>
                                 <input value={email} onChange={e => setEmail(e.target.value)} className={`input`} type="email"
-                                       name="email" id="login"/>
+                                       name="email" placeholder={'Введите почту'} id="login"/>
                             </div>
                         </div>
                         <div className="input-div two">
@@ -76,10 +75,10 @@ const Auth = observer(() => {
                                 <i className="fas fa-lock"></i>
                             </div>
                             <div>
-                                <h5>Логин</h5>
+
                                 <input className="input" type="login"
                                        value={loginUser} onChange={e => {setLoginUser(e.target.value)}}
-                                       name="login" id="login"/>
+                                       name="login" placeholder={'Введите логин'} id="login"/>
                             </div>
                         </div>
                         <div className="input-div two">
@@ -87,10 +86,9 @@ const Auth = observer(() => {
                                 <i className="fas fa-lock"></i>
                             </div>
                             <div>
-                                <h5>Password</h5>
                                 <input className="input" type="password"
                                         value={password} onChange={e => setPassword(e.target.value)}
-                                       name="password" id="password"/>
+                                       name="password" placeholder={'Введите пароль'} id="password"/>
                             </div>
                         </div>
                         <div className={'flex__div'}>

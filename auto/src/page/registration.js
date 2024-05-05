@@ -24,15 +24,18 @@ const Registration = observer(() => {
     const [email, setEmail] = useState('')
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
+    const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
     const click = async () => {
         try {
-            let data;
+            if(EMAIL_REGEXP.test(email) && password.length>=6) {
+                console.log(email)
+                let data;
                 data = await registration(fio, passport, phone, email, login, password)
-            user.setUser(user)
-            user.setIsAuth(true)
-            navigate(CATALOG__ROUTE)
-
+                user.setUser(user)
+                user.setIsAuth(true)
+                navigate(CATALOG__ROUTE)
+            }
         } catch (e){
             alert(e.response.data.message)
         }
@@ -47,16 +50,16 @@ const Registration = observer(() => {
             </div>
 
             <div className="login-container">
-                <form action={'/login'} method={'POST'}>
+                <form  onSubmit={click}>
                     <h2 className="welcom">{"Регистрация"}</h2>
                     <div className={"input-div"}>
                         <div className="i">
                             <i className="fa-regular fa-envelope"></i>
                         </div>
                         <div>
-                            <h5>ФИО</h5>
+
                             <input value={fio} onChange={e => setFio(e.target.value)} className="input" type="fio"
-                                   name="text" id="fio"/>
+                                   name="text" placeholder={'Введите ФИО'} id="fio"/>
                         </div>
                     </div>
                     <div className={"input-div "}>
@@ -64,10 +67,10 @@ const Registration = observer(() => {
                             <i className="fa-regular fa-envelope"></i>
                         </div>
                         <div>
-                            <h5>Паспорт</h5>
+
                             <InputMask id={'input'} className={'input'} value={passport}
                                        onChange={(e) => setPassport(e.target.value)} mask="9999 999999"
-                                       placeholder=""></InputMask>
+                                       placeholder="Введите паспорт"></InputMask>
                         </div>
                     </div>
                     <div className={"input-div "}>
@@ -76,10 +79,10 @@ const Registration = observer(() => {
                             <i className="fa-solid fa-phone"></i>
                         </div>
                         <div>
-                            <h5>Phone</h5>
+
                             <InputMask id={'input'} className={'input'} value={phone}
                                        onChange={(e) => setPhone(e.target.value)} mask="+7 (999) 999-99-99"
-                                       placeholder=""></InputMask>
+                                       placeholder="Введите номер телефона"></InputMask>
                         </div>
                     </div>
                     <div className={"input-div "}>
@@ -87,9 +90,9 @@ const Registration = observer(() => {
                             <i className="fa-regular fa-envelope"></i>
                         </div>
                         <div>
-                            <h5>Email</h5>
+
                             <input value={email} onChange={e => setEmail(e.target.value)} className="input" type="email"
-                                   name="email" id="email"/>
+                                   name="email" placeholder={'Введите почту'} id="email"/>
                         </div>
 
                     </div>
@@ -99,9 +102,9 @@ const Registration = observer(() => {
                             <i className="fas fa-user"></i>
                         </div>
                         <div>
-                            <h5>Логин</h5>
+
                             <input value={login} onChange={e => setLogin(e.target.value)} className="input" type="text"
-                                   name="text" id="text"/>
+                                   name="text" placeholder={'Введите логин'} id="text"/>
                         </div>
                     </div>
                     <div className={"input-div "}>
@@ -110,9 +113,8 @@ const Registration = observer(() => {
                             <i className="fas fa-lock"></i>
                         </div>
                         <div>
-                            <h5>Password</h5>
-                            <input value={password} onChange={e => setPassword(e.target.value)} className="input" type="password"
-                                   name="password" id="password"/>
+                            <input value={password} onChange={e => setPassword(e.target.value)} minLength={6} className="input" type="password"
+                                   name="password" placeholder={'Введите пароль'} id="password"/>
                         </div>
 
                     </div>
@@ -121,7 +123,7 @@ const Registration = observer(() => {
                             Есть аккаунт?  <NavLink to={LOGIN_ROUTE} className={'gray'}>Войдите!</NavLink>
                         </div>
 
-                        <button  type={'button'} className={'button__link'} onClick={click}>Зарегистрироваться</button>
+                        <button  type={'submit'} className={'button__link'} onClick={click}>Зарегистрироваться</button>
                     </div>
 
                 </form>
